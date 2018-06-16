@@ -1,5 +1,6 @@
 package com.kei.exoplayertrial.playList
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.kei.exoplayertrial.R
 import com.kei.exoplayertrial.databinding.ActivityPlayListBinding
+import com.kei.exoplayertrial.player.PlaybackActivity
 
 class PlayListActivity : AppCompatActivity() {
 
@@ -31,7 +33,10 @@ class PlayListActivity : AppCompatActivity() {
             setOnClickListener(object : PlayListAdapter.OnItemClickListener {
                 override fun onClick(view: View, data: MediaData) {
                     Snackbar.make(view, "clickData:" + data.title, Snackbar.LENGTH_LONG)
-                            .setAction("Action", null)
+                            .setAction("Avtion", {
+                                val intent = Intent(this@PlayListActivity, PlaybackActivity::class.java)
+                                startActivity(intent)
+                            })
                             .show()
                 }
             })
